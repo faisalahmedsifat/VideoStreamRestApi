@@ -52,11 +52,11 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder>{
         holder.source.setText(video.getSource());
         holder.uploaded.setText(video.getUploaded());
         holder.views.setText(video.getViews());
-        Glide.with(context)
-                .asBitmap()
-                .load(video.getThumbnail())
-                .into(holder.videoThumbnail);
-        //Picasso.get().load(R.drawable.sumu).into(holder.videoThumbnail);
+//        Glide.with(context)
+//                .asBitmap()
+//                .load(video.getThumbnail())
+//                .into(holder.videoThumbnail);
+        Picasso.get().load(video.getThumbnail()).fit().placeholder(R.drawable.load).into(holder.videoThumbnail);
     }
 
     @Override
