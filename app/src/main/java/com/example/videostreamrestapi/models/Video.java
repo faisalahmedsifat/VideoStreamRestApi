@@ -1,8 +1,19 @@
 package com.example.videostreamrestapi.models;
 
-public class Video {
+import java.io.Serializable;
+
+public class Video implements Serializable {
     private String title, source, uploaded;
     private String views;
+    private String description;
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     @Override
     public String toString() {
@@ -11,8 +22,9 @@ public class Video {
                 ", source='" + source + '\'' +
                 ", uploaded='" + uploaded + '\'' +
                 ", views='" + views + '\'' +
+                ", description='" + description + '\'' +
                 ", URL='" + URL + '\'' +
-                ", thumbnail=" + thumbnail +
+                ", thumbnail='" + thumbnail + '\'' +
                 '}';
     }
 

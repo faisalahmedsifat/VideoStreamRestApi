@@ -1,6 +1,8 @@
 package com.example.videostreamrestapi.adapters;
 
 import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +14,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.videostreamrestapi.PlayerActivity;
 import com.example.videostreamrestapi.R;
 import com.example.videostreamrestapi.models.Video;
 import com.squareup.picasso.Picasso;
@@ -57,6 +60,16 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder>{
 //                .load(video.getThumbnail())
 //                .into(holder.videoThumbnail);
         Picasso.get().load(video.getThumbnail()).fit().placeholder(R.drawable.load).into(holder.videoThumbnail);
+        holder.vv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle b = new Bundle();
+                b.putSerializable("videoData", list.get(position));
+                Intent i = new Intent(context, PlayerActivity.class);
+                i.putExtras(b);
+                v.getContext().startActivity(i);
+            }
+        });
     }
 
     @Override
@@ -68,6 +81,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder>{
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView videoThumbnail;
         TextView title, source, uploaded, views;
+        View vv;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
@@ -76,6 +90,7 @@ public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.ViewHolder>{
             source = itemView.findViewById(R.id.source);
             uploaded = itemView.findViewById(R.id.uploaded);
             views = itemView.findViewById(R.id.views);
+            vv = itemView;
 
         }
     }

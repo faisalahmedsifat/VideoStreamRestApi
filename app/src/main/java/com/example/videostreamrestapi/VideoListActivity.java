@@ -56,6 +56,8 @@ public class VideoListActivity extends AppCompatActivity {
                     for(int i = 0; i <videos.length();i++){
                         JSONObject video = videos.getJSONObject(i);
                         String imageUrl = video.getString("thumb");
+//                        Log.d(TAG, "onResponse: "+video.getString("description"));
+
                         //Log.d(TAG, "onResponse: "+ video.getString("title"));
                         JSONArray videoUrl = video.getJSONArray("sources");
                         Video v = new Video(video.getString("title"),
@@ -64,7 +66,8 @@ public class VideoListActivity extends AppCompatActivity {
                                 "100K Views",
                                 imageUrl,
                                 videoUrl.getString(0));
-                        Log.d(TAG, "onResponse: "+v.toString());
+                        v.setDescription(video.getString("description"));
+                        Log.d(TAG, "onResponse: parsing json "+v.toString());
                         list.add(v);
                     }
                 } catch (JSONException e) {
