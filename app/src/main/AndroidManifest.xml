@@ -9,8 +9,9 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
+        android:screenOrientation="landscape"
+        android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
         android:supportsRtl="true"
-        android:theme="@style/Theme.VideoStreamRestApi"
         android:usesCleartextTraffic="true">
         <activity android:name=".PlayerActivity"></activity>
         <activity android:name=".VideoListActivity">
